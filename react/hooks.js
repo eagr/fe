@@ -37,3 +37,11 @@ function useReducer (reducer, initState, initialize) {
     }
     return hook.state
 }
+
+// [state, setState(ns)]
+function useState (initState) {
+    return useReducer(
+        (os, ns) => (typeof ns === 'function' ? ns(os) : ns),
+        initState,
+    )
+}
